@@ -1,0 +1,160 @@
+/* ===== NAVBAR ELEGANTE ===== */
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1.2rem 2.5rem;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sidebar-toggle {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 12px;
+  display: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  font-size: 1.1rem;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.navbar-title {
+  text-align: center;
+  flex: 1;
+  margin: 0 2rem;
+}
+
+.navbar-title h1 {
+  color: #1e293b;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.navbar-title p {
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.navbar-user {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: #475569;
+  font-weight: 600;
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.navbar-user:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+/* ===== RESPONSIVE NAVBAR ===== */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+  
+  .navbar-title h1 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  .navbar-title h1 {
+    font-size: 1.4rem;
+  }
+
+  .navbar-title p {
+    font-size: 0.85rem;
+  }
+
+  .navbar-user {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar-title {
+    margin: 0 1rem;
+  }
+  
+  .navbar-title h1 {
+    font-size: 1.2rem;
+  }
+  
+  .navbar-user {
+    display: none;
+  }
+}
+
+/* Efectos de brillo al hacer hover */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.navbar:hover::before {
+  left: 100%;
+}

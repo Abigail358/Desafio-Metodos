@@ -1,0 +1,322 @@
+/* src/styles/Global.css */
+
+/* Importar Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos del body */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Estilos de código */
+code {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Scrollbar personalizado para navegadores webkit */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7);
+}
+
+/* Scrollbar para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.5) rgba(15, 23, 42, 0.5);
+}
+
+/* Animación de fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Animación de pulse suave */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Estilos para pre y code blocks */
+pre {
+  overflow-x: auto;
+  white-space: pre;
+  word-wrap: normal;
+  border-radius: 0.5rem;
+}
+
+pre code {
+  display: block;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+/* Selección de texto personalizada */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+/* Transiciones suaves globales */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Estilos para tablas responsivas */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Mejoras de accesibilidad para focus */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.8);
+  outline-offset: 2px;
+}
+
+/* Prevenir el comportamiento de selección en botones */
+button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Estilos para inputs y formularios si los necesitas en el futuro */
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Animación de entrada desde la izquierda */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideInFromLeft {
+  animation: slideInFromLeft 0.3s ease-out forwards;
+}
+
+/* Animación de entrada desde la derecha */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideInFromRight {
+  animation: slideInFromRight 0.3s ease-out forwards;
+}
+
+/* Backdrop blur para modal/overlay */
+.backdrop-blur {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Estilos para impresión */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Mejoras de rendimiento */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ocultar scrollbar pero mantener funcionalidad (opcional) */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gradientes reutilizables */
+.gradient-blue-purple {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+}
+
+.gradient-purple-pink {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+}
+
+.gradient-green-emerald {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* Text gradient */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading spinner (si lo necesitas) */
+.spinner {
+  border: 3px solid rgba(59, 130, 246, 0.3);
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estilos para badges/tags */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Mejoras para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .hover\:bg-white\/10:hover {
+    background-color: transparent;
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Dark mode (opcional para futuro) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0f172a;
+    color: #e2e8f0;
+  }
+}
+
+/* Utility classes personalizadas */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.border-gradient {
+  border-image: linear-gradient(135deg, #3b82f6, #8b5cf6) 1;
+}
+
+

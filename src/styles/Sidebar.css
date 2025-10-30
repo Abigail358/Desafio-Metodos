@@ -1,0 +1,298 @@
+/* ===== SIDEBAR ELEGANTE ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 300px;
+  background: linear-gradient(180deg, 
+    rgba(15, 23, 42, 0.95) 0%, 
+    rgba(30, 41, 59, 0.95) 50%, 
+    rgba(51, 65, 85, 0.95) 100%);
+  color: white;
+  z-index: 1000;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 20px 0 50px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.sidebar-header {
+  padding: 2.5rem 1.5rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.1) 0%, 
+    rgba(118, 75, 162, 0.1) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-icon {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.logo-text {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+.sidebar-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #cbd5e1;
+  cursor: pointer;
+  padding: 0.6rem;
+  border-radius: 10px;
+  display: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-size: 1.1rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-close:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 2rem 0;
+  overflow-y: auto;
+}
+
+/* Scrollbar personalizado para sidebar */
+.sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 3px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 2rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  margin: 0.5rem 1rem;
+  border-radius: 0 12px 12px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(102, 126, 234, 0.2), 
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.sidebar-link:hover::before {
+  left: 100%;
+}
+
+.sidebar-link:hover {
+  background: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.15) 0%, 
+    rgba(118, 75, 162, 0.15) 100%);
+  color: white;
+  border-left-color: #667eea;
+  transform: translateX(8px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.sidebar-link.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-left-color: #a78bfa;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  transform: translateX(5px);
+}
+
+.sidebar-link.active::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+.sidebar-icon {
+  font-size: 1.4rem;
+  width: 24px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-link:hover .sidebar-icon {
+  transform: scale(1.2);
+}
+
+.sidebar-footer {
+  padding: 2rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, 
+    rgba(15, 23, 42, 0.8) 0%, 
+    rgba(30, 41, 59, 0.8) 100%);
+}
+
+.university-info {
+  text-align: center;
+}
+
+.university-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+  opacity: 0.9;
+}
+
+.faculty, .career {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+}
+
+/* ===== RESPONSIVE SIDEBAR ===== */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 320px;
+  }
+
+  .sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-close {
+    display: flex;
+  }
+  
+  .sidebar-link {
+    padding: 1.4rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+  }
+  
+  .sidebar-header {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+  
+  .logo-text {
+    font-size: 1.2rem;
+  }
+}
+
+/* Efectos de partículas en el fondo del sidebar */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(79, 70, 229, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
